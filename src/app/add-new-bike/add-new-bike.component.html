@@ -1,6 +1,43 @@
 <div class="container add-new-product">
-  <div class="row">
-    <h2>Add new bike </h2>
 
-  </div>
+  <h2>Add new bike </h2>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input name="newBike" [(ngModel)]="newBike.name" type="text" class="form-control" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input name="newBike" [(ngModel)]="newBike.price" type="number" class="form-control" id="price" required>
+    </div>
+    <div class="form-group">
+      <label for="thumbnailImage">Thumbnail Image:</label>
+      <input type="text" class="form-control" id="thumbnailImage">
+    </div>
+    <div class="form-group">
+      <label for="price">Info:</label>
+      <input name="newBike" [(ngModel)]="newBike.info" type="text" class="form-control" id="info" required>
+    </div>
+    <div class="form-group">
+      <label for="detailImg1">Detailed Image 1:</label>
+      <input type="text" class="form-control" id="detailImg1">
+    </div>
+    <div class="form-group">
+      <label for="detailImg2">Detailed Image 2:</label>
+      <input type="text" class="form-control" id="detailImg2">
+    </div>
+    <div class="form-group">
+      <label for="detailImg3">Detailed Image 3:</label>
+      <input type="text" class="form-control" id="detailImg3">
+    </div>
+
+    <div class="form-group">
+      {{messages}}
+    </div>
+
+    <div class="row justify-content-center">
+      <button (click)="createBike()" type="submit" class="btn btn-primary btn-lg text-center">Create Bike</button>
+    </div>
+  </form>
+
 </div>
