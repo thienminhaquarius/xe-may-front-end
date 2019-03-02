@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { EmitUpdateUserService } from '../services/emit-update-user.service';
 
 interface User {
   email: string,
@@ -27,8 +28,10 @@ export class AuthService {
   private loginUrl = this.apiUrl + '/login';
   private logoutUrl = this.apiUrl + '/logout';
 
-  constructor(private http: HttpClient,
-    private router: Router
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public emitter: EmitUpdateUserService,
   ) { }
 
   onRegister(user: User) {
@@ -69,6 +72,22 @@ export class AuthService {
       var base64 = base64Url.replace('-', '+').replace('_', '/');
       return JSON.parse(window.atob(base64));
     }
+  }
+
+  isValidatedToken() {
+    if (!this.getToken()) {
+      return false;
+    }
+
+    let expireTimes = this.getUserInfo()['exp'];
+    let currentTimes = Math.floor(Date.now() / 1000);
+    if (expireTimes - currentTimes < 0) {
+      this.removeToken();
+      this.emitter.doUpdateUser();
+      return false
+    }
+
+    return true;
   }
 
   isAuhtenticated(): boolean {

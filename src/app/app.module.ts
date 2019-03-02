@@ -12,15 +12,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetailsProductComponent } from './details-product/details-product.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AddProductComponent } from './add-product/add-product.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddNewBikeComponent } from './add-new-bike/add-new-bike.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'detailsproduct/:id', component: DetailsProductComponent },
-  { path: 'addproduct', component: AddProductComponent },
+  { path: 'add-new-bike', component: AddNewBikeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
@@ -36,9 +36,9 @@ const appRoutes: Routes = [
     DetailsProductComponent,
     LoginComponent,
     RegisterComponent,
-    AddProductComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    AddNewBikeComponent
   ],
   imports: [
     BrowserModule,

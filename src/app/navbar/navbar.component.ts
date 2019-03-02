@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public user;
 
   constructor(
-    public emitter: EmitUpdateUserService,
+    private emitter: EmitUpdateUserService,
     private auth: AuthService
   ) {
     this.emitter.updateUser.subscribe(() => {

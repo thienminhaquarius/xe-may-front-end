@@ -26,6 +26,11 @@ export class LogoutComponent implements OnInit {
         'Authorization': 'Bearer ' + this.auth.getToken()
       })
     }
+    if (!this.auth.isValidatedToken()) {
+      this.router.navigate(['/']);
+      return;
+    }
+
     this.auth.onLogout(httpOptions).subscribe(res => {
       this.message = 'Log Out Success!, Redirect to Home page...';
       this.auth.removeToken();
@@ -35,8 +40,6 @@ export class LogoutComponent implements OnInit {
       }, 2000);
     }, error => {
       this.message = 'Something wrong!, try logout later'
-    })
-
-
+    });
   }
 }

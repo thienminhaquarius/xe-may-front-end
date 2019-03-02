@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      // console.log(params);
       this.returnUrl = params['return'] || '/';
 
     });
@@ -48,6 +48,11 @@ export class LoginComponent implements OnInit {
         this.auth.setToken(token);
         this.emitter.doUpdateUser();
       }
+
+      let exp = this.auth.getUserInfo()['exp'];
+      let clientTime = Math.floor(Date.now() / 1000);
+
+      console.log(console.log(exp - clientTime));
 
 
     }, error => {

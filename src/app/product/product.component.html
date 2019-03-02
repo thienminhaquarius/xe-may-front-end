@@ -1,9 +1,9 @@
 <div class="card product">
   <a href="#" class="btn" routerLink="/detailsproduct/{{product.id}}"> <img class="card-img-top"
-      src="{{product?.picture}}" alt="Card image cap">
+      src="{{assetsUrl+product?.thumbnailImage}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{product?.name?.toUpperCase()}}</h5>
-      <p class="card-text">{{product?.price | currency:'VND'}}</p>
+      <p class="card-text">{{product?.price | currency:'$'}}</p>
     </div>
   </a>
 </div>
