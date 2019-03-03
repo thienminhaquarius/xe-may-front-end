@@ -3,3 +3,5 @@
 body {
     background: #f3f3f3;
 }
+
+@import '~css-star-rating/scss/star-rating';

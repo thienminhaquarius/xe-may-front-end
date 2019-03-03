@@ -4,6 +4,10 @@
     <div class="card-body">
       <h5 class="card-title">{{product?.name?.toUpperCase()}}</h5>
       <p class="card-text">{{product?.price | currency:'$'}}</p>
+      <p class="card-text">Commnets ({{product?.comments_count}})</p>
+
+      <star-rating [starType]="'icon'" [rating]="2.63"></star-rating>
+
     </div>
   </a>
 </div>

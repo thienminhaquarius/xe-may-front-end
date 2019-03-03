@@ -16,6 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddNewBikeComponent } from './add-new-bike/add-new-bike.component';
 
+import { StarRatingModule } from 'angular-star-rating';
+
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    StarRatingModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
