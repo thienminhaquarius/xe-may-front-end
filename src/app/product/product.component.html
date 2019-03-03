@@ -4,6 +4,8 @@
     <div class="card-body">
       <h5 class="card-title">{{product?.name?.toUpperCase()}}</h5>
       <p class="card-text">{{product?.price | currency:'$'}}</p>
+      <p class="card-text">Comments ({{product?.comments_count}})</p>
+      <!-- <star-rating-comp [startype]="'svg'" [rating]="{{product?.ratings_count}}"></star-rating-comp> -->
     </div>
   </a>
 </div>

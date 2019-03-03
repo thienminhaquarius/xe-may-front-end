@@ -27,7 +27,7 @@ export class ProductsService {
     return this.http.get<Array<ProductInterface>>(this.apiUrl + "/bikes" + "?" + queryString);
   }
 
-  create() {
-    return this.http.post(this.apiUrl + "/bikes", {}, {});
+  create(newBike: any, httpHeaders: any) {
+    return this.http.post(this.apiUrl + "/bikes", newBike, httpHeaders);
   }
 }
