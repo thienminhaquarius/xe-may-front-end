@@ -39,7 +39,8 @@ export class LogoutComponent implements OnInit {
         this.router.navigate(['/']);
       }, 2000);
     }, error => {
-      this.message = 'Something wrong!, try logout later'
+      let errorString = JSON.stringify(error.error)
+      this.message = errorString;
     });
   }
 }

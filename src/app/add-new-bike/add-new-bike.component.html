@@ -1,22 +1,26 @@
 <div class="container add-new-product">
 
   <h2>Add new bike </h2>
-  <form action="/action_page.php">
+  <form enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Name:</label>
-      <input name="newBike" [(ngModel)]="newBike.name" type="text" class="form-control" id="name" required>
+      <input name="name" [(ngModel)]="newBike.name" type="text" class="form-control" id="name" required>
     </div>
     <div class="form-group">
       <label for="price">Price:</label>
-      <input name="newBike" [(ngModel)]="newBike.price" type="number" class="form-control" id="price" required>
+      <input name="price" [(ngModel)]="newBike.price" type="number" class="form-control" id="price" required>
     </div>
     <div class="form-group">
       <label for="thumbnailImage">Thumbnail Image:</label>
-      <input type="text" class="form-control" id="thumbnailImage">
+      <div class="custom-file mb-3">
+        <input #imageInput type="file" class="custom-file-input" accept="image/jpeg,image/jpg, image/png"
+          id="thumbnailImage" (change)="processFile(imageInput)">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
     </div>
     <div class="form-group">
       <label for="price">Info:</label>
-      <input name="newBike" [(ngModel)]="newBike.info" type="text" class="form-control" id="info" required>
+      <input name="info" [(ngModel)]="newBike.info" type="text" class="form-control" id="info" required>
     </div>
     <div class="form-group">
       <label for="detailImg1">Detailed Image 1:</label>
