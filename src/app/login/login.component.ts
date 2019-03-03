@@ -16,7 +16,7 @@ class loginUser {
 export class LoginComponent implements OnInit {
   public user = new loginUser;
   public message = '';
-  private returnUrl = '/';
+  private returnUrl = '/'
 
   constructor(
     private auth: AuthService,
@@ -35,30 +35,29 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.message = '';
-    this.auth.onLogin(this.user).subscribe(
-      res => {
-        console.log(res);
-        this.message = 'Log In Success, Redirect to Home Page...!';
-        setTimeout(() => {
-          this.router.navigate([this.returnUrl]);
-        }, 2000);
-        const token: string = res['access_token'];
+    this.auth.onLogin(this.user).subscribe(res => {
+      console.log(res);
+      this.message = 'Log In Success, Redirect to Home Page...!';
+      setTimeout(() => {
+        this.router.navigate([this.returnUrl]);
+      }, 2000);
+      const token: string = res['access_token'];
 
-        // If we have a token, proceed
-        if (token) {
-          this.auth.setToken(token);
-          this.emitter.doUpdateUser();
-        }
+      // If we have a token, proceed
+      if (token) {
+        this.auth.setToken(token);
+        this.emitter.doUpdateUser();
+      }
 
-        let exp = this.auth.getUserInfo()['exp'];
-        let clientTime = Math.floor(Date.now() / 1000);
+      let exp = this.auth.getUserInfo()['exp'];
+      let clientTime = Math.floor(Date.now() / 1000);
 
-        console.log(console.log(exp - clientTime));
+      console.log(console.log(exp - clientTime));
 
 
-      }, error => {
-        this.message = 'Usernmame or Password is incorrect!';
-      })
+    }, error => {
+      this.message = 'Usernmame or Password is incorrect!';
+    })
   }
 
 }
