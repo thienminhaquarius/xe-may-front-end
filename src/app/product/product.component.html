@@ -6,7 +6,7 @@
       <p class="card-text">{{product?.price | currency:'$'}}</p>
       <p class="card-text">Commnets ({{product?.comments_count}})</p>
 
-      <star-rating [starType]="'icon'" [rating]="2.63"></star-rating>
+      <star-rating [starType]="'icon'" [rating]="product?.ratings_avg"></star-rating>
 
     </div>
   </a>
