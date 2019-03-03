@@ -17,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AddNewBikeComponent } from './add-new-bike/add-new-bike.component';
 
 import { StarRatingModule } from 'angular-star-rating';
+import { FooterComponent } from './footer/footer.component';
 
 
 const appRoutes: Routes = [
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     NavbarComponent,
     LogoutComponent,
-    AddNewBikeComponent
+    AddNewBikeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

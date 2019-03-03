@@ -1,0 +1,7 @@
+:host .outletTag {
+    min-height: 600px;
+}
+
+:host .addminAccount {
+    margin: 50px;
+}
