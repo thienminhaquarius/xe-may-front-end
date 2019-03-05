@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { EmitUpdateUserService } from '../services/emit-update-user.service';
 
 class loginUser {
@@ -22,15 +22,11 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private emitter: EmitUpdateUserService
+    private emitter: EmitUpdateUserService,
+
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      // console.log(params);
-      this.returnUrl = params['return'] || '/';
-
-    });
   }
 
   login() {

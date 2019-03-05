@@ -1,3 +1,33 @@
-<p>
-  details-product works!
-</p>
+<div class="container detail-product">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="{{assetsUrl +detailBike?.thumbnailImage}}" class="rounded text-center" alt="Cinque Terre">
+      <br>
+      <br>
+    </div>
+    <div class="col-md-3">
+      <h5 class="card-title">{{detailBike?.name?.toUpperCase()}}</h5>
+      <p class="card-text">Prices: {{detailBike?.price | currency:'$ '}}</p>
+      <p class="card-text">Info: {{detailBike?.info}}</p>
+      <div class="row">
+        <div class="col-xs-5">
+          Current Rating: {{detailBike?.ratings_avg}}
+          <star-rating [showHalfStars]="true" [readOnly]="true" [starType]="'icon'" [rating]="detailBike?.ratings_avg">
+          </star-rating>
+        </div>
+        <div class="col-xs-7"></div>
+      </div>
+    </div>
+  </div>
+  <h3 class="card=text">Rating</h3>
+
+  <h3 class="card=text">Comments</h3>
+  <p>The form below contains a textarea for comments:</p>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="3" id="comment" name="text"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

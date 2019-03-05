@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { environment } from '../../environments/environment';
-
 
 export interface ProductInterface {
   id: string,
@@ -12,7 +10,6 @@ export interface ProductInterface {
   created_at: string,
   updated_at: string
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +26,13 @@ export class ProductsService {
 
   create(newBike: any, httpHeaders: any) {
     return this.http.post(this.apiUrl + "/bikes", newBike, httpHeaders);
+  }
+
+  getDetailBike(id) {
+    return this.http.get(this.apiUrl + "/bikes" + "/" + id);
+  }
+
+  deleteBike(id: any, httpHeaders: any) {
+    return this.http.delete(this.apiUrl + "/bikes" + "/" + id, httpHeaders);
   }
 }

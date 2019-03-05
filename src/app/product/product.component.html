@@ -1,4 +1,7 @@
 <div class="card product">
+  <div *ngIf="systemAdmin">
+    <button (click)="deleteBtn()" type="button" class="btn btn-danger">Delete</button>
+  </div>
   <a href="#" class="btn" routerLink="/detailsproduct/{{product.id}}"> <img class="card-img-top"
       src="{{assetsUrl+product?.thumbnailImage}}" alt="Card image cap">
     <div class="card-body">
@@ -6,8 +9,8 @@
       <p class="card-text">{{product?.price | currency:'$'}}</p>
       <p class="card-text">Commnets ({{product?.comments_count}})</p>
 
-      <star-rating [starType]="'icon'" [rating]="product?.ratings_avg"></star-rating>
-
+      <star-rating [showHalfStars]="true" [readOnly]="true" [starType]="'icon'" [rating]="product?.ratings_avg">
+      </star-rating>
     </div>
   </a>
 </div>
