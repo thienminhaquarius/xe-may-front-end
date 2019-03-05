@@ -28,6 +28,7 @@ export class AddNewBikeComponent implements OnInit {
   public newBike = new newBike;
   private httpOptions: any;
 
+  public isDisabled = true;
 
   constructor(
     private products: ProductsService,
@@ -64,16 +65,28 @@ export class AddNewBikeComponent implements OnInit {
   }
 
   processFile(input) {
+    this.messages = '';
+    this.isDisabled = true;
 
     if (input.files && input.files[0]) {
-      var reader = new FileReader();
+      var img = new Image();
+      img.onload = () => {
+        if (img.width == 200 && img.height == 200) {
 
-      reader.onload = (event: any) => {
-        // console.log('e: ', event.target.result);
-        this.newBike.thumbnailImage = event.target.result.split(',').pop();
-
+          //load file
+          let imageFile = new FileReader();
+          imageFile.onload = (event: any) => {
+            this.newBike.thumbnailImage = event.target.result.split(',').pop();
+            this.isDisabled = false;
+          }
+          imageFile.readAsDataURL(input.files[0]);
+        } else {
+          //fail
+          this.messages = 'Image resolution must be 200x200';
+        }
       }
-      reader.readAsDataURL(input.files[0]);
+      img.src = window.URL.createObjectURL(input.files[0]);
+
     }
   }
 

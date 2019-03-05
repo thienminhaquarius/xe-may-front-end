@@ -28,7 +28,8 @@
     </div>
 
     <div class="row justify-content-center">
-      <button (click)="createBike()" type="submit" class="btn btn-primary btn-lg text-center">Create Bike</button>
+      <button [disabled]="isDisabled" (click)="createBike()" type="submit" class="btn btn-primary btn-lg text-center">Create
+        Bike</button>
     </div>
   </form>
 
