@@ -57,9 +57,14 @@ export class AddNewBikeComponent implements OnInit {
         this.messages = 'Success';
         this.router.navigate(['/']);
       },
-      error => {
-        let errorString = JSON.stringify(error.error)
-        this.messages = errorString;
+      errors => {
+        console.log(errors)
+        if (errors.status == 401) {
+          this.messages = 'User is not valid, login again';
+          this.auth.isValidatedToken();
+        } else {
+          this.messages = errors.message;
+        }
       }
     )
   }
@@ -69,6 +74,10 @@ export class AddNewBikeComponent implements OnInit {
     this.isDisabled = true;
 
     if (input.files && input.files[0]) {
+      if (input.files[0].size / 1000 > 100) {
+        this.messages = 'Image size must be less than 100KB';
+        return;
+      }
       var img = new Image();
       img.onload = () => {
         if (img.width == 200 && img.height == 200) {
@@ -86,7 +95,6 @@ export class AddNewBikeComponent implements OnInit {
         }
       }
       img.src = window.URL.createObjectURL(input.files[0]);
-
     }
   }
 
