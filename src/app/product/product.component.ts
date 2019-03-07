@@ -14,16 +14,23 @@ export class ProductComponent implements OnInit {
   public systemAdmin = false;
   private httpOptions: any;
 
+
   public readonly assetsUrl = environment.assetsThumbnailUrl;
+  public readonly defaultImg = environment.url + 'default.jpg';
+  public imageSrc: String;
   @Input() product: any
 
   constructor(
     private auth: AuthService,
     private productSevice: ProductsService,
     private emitRemoveProduct: EmitRemoveProductService
-  ) { }
+  ) {
+    this.imageSrc = this.defaultImg;
+  }
 
   ngOnInit() {
+    this.imageSrc = this.assetsUrl + this.product.thumbnailImage;
+
     if (this.auth.isAuhtenticated()) {
       this.systemAdmin = this.auth.getUserInfo()['useremail'] === 'boss@gmail.com';
       console.log(this.product);

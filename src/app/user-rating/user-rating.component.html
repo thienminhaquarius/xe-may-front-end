@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5">
+      <star-rating [rating]="ratingPoint" size="large" [readOnly]="!activeRating" [hoverEnabled]="activeRating"
+        staticColor="ok" [starType]="'icon'" labelPosition="bottom" labelText="Your rating: {{ratingPoint}} "
+        (ratingChange)="onClickRatingChange($event)">
+      </star-rating>
+    </div>
+    <div class="col-xs-7">
+      <div class="card-text" *ngIf="!activeRating">
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        You need to login to use rating!</div>
+      <div *ngIf="activeRating">
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button (click)="createOrUpdateRating()" [disabled]="isDisabledBtn" type="submit"
+          class="btn btn-primary">Submit</button></div>
+      <br>
+      <div class="card-text">
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        {{message}}
+      </div>
+    </div>
+  </div>
+</div>

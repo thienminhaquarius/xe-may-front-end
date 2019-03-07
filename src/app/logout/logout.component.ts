@@ -20,15 +20,17 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (!this.auth.isValidatedToken()) {
+      this.router.navigate(['/']);
+      return;
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.auth.getToken()
       })
-    }
-    if (!this.auth.isValidatedToken()) {
-      this.router.navigate(['/']);
-      return;
     }
 
     this.auth.onLogout(httpOptions).subscribe(res => {

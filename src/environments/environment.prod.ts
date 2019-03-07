@@ -1,5 +1,9 @@
+const url = 'https://secure-sands-63078.herokuapp.com/';
+
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8081/api',
-  assetsThumbnailUrl: 'http://localhost:8081/productThumbnailImage/'
+  url: url,
+  apiUrl: url + 'api/',
+  assetsThumbnailUrl: url + 'productThumbnailImage/'
 };
+

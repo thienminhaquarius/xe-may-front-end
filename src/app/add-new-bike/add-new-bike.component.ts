@@ -37,7 +37,7 @@ export class AddNewBikeComponent implements OnInit {
   ) {
     this.newBike.name = 'Winner';
     this.newBike.price = 10000000;
-    this.newBike.info = 'reeeeeeeeeeeeeeeeeeeeeeeeeeee';
+    this.newBike.info = 'Good Bike!';
   }
 
   ngOnInit() {

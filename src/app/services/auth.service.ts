@@ -91,12 +91,19 @@ export class AuthService {
   }
 
   isAuhtenticated(): boolean {
-    // get the token
-    const token: string = this.getToken();
-    if (token) {
-      return true;
+    if (!this.getToken()) {
+      return false;
     }
-    return false;
+
+    let expireTimes = this.getUserInfo()['exp'];
+    let currentTimes = Math.floor(Date.now() / 1000);
+    if (expireTimes - currentTimes < 0) {
+      this.removeToken();
+      this.emitter.doUpdateUser();
+      return false
+    }
+
+    return true;
   }
 
 

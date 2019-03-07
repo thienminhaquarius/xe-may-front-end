@@ -2,10 +2,23 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
+const useLocal = true;
+
+
+var url = '';
+if (useLocal) {
+  url = 'http://localhost:8081/';
+} else {
+  url = 'https://secure-sands-63078.herokuapp.com/';
+}
+
+
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8081/api',
-  assetsThumbnailUrl: 'http://localhost:8081/productThumbnailImage/'
+  url: url,
+  apiUrl: url + 'api',
+  assetsThumbnailUrl: url + 'productThumbnailImage/'
 };
 
 /*

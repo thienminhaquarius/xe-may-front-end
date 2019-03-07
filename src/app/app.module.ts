@@ -18,6 +18,7 @@ import { AddNewBikeComponent } from './add-new-bike/add-new-bike.component';
 
 import { StarRatingModule } from 'angular-star-rating';
 import { FooterComponent } from './footer/footer.component';
+import { UserRatingComponent } from './user-rating/user-rating.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +28,9 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
+
+  //test component
+  { path: 'user-rating', component: UserRatingComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -42,7 +46,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     LogoutComponent,
     AddNewBikeComponent,
-    FooterComponent
+    FooterComponent,
+    UserRatingComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     StarRatingModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
   ],
   providers: [],
   bootstrap: [AppComponent]

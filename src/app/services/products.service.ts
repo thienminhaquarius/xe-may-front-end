@@ -28,11 +28,15 @@ export class ProductsService {
     return this.http.post(this.apiUrl + "/bikes", newBike, httpHeaders);
   }
 
-  getDetailBike(id) {
-    return this.http.get(this.apiUrl + "/bikes" + "/" + id);
+  getDetailBike(id, httpHeaders: any) {
+    return this.http.get(this.apiUrl + "/bikes" + "/" + id, httpHeaders);
   }
 
   deleteBike(id: any, httpHeaders: any) {
     return this.http.delete(this.apiUrl + "/bikes" + "/" + id, httpHeaders);
+  }
+
+  createOrUpdateRating(ratingModel: any, httpHeaders: any) {
+    return this.http.post(this.apiUrl + "/ratings", ratingModel, httpHeaders);
   }
 }
