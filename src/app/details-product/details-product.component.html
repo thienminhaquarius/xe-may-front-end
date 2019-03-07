@@ -13,7 +13,7 @@
         <div class="col-xs-5">
           Current Rating: {{bike?.ratings_avg}}
           <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [starType]="'icon'"
-            [rating]="bike?.ratings_avg">
+            [rating]="bike?.ratings_avg || 0">
           </star-rating>
         </div>
         <div class="col-xs-7"></div>
