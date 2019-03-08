@@ -1,4 +1,4 @@
-const url = 'https://secure-sands-63078.herokuapp.com/';
+const url = 'https://laravel-xe.herokuapp.com/';
 
 export const environment = {
   production: true,

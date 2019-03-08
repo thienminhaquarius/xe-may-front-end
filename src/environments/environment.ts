@@ -5,12 +5,11 @@
 
 const useLocal = true;
 
-
 var url = '';
 if (useLocal) {
   url = 'http://localhost:8081/';
 } else {
-  url = 'https://secure-sands-63078.herokuapp.com/';
+  url = 'https://laravel-xe.herokuapp.com/';
 }
 
 

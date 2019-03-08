@@ -13,9 +13,6 @@ export class NotFoundComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.router.navigate(['/']);
-    }, 2000);
 
   }
 

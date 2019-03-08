@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResetDataService } from '../services/reset-data.service';
 import { Router, ActivatedRoute } from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-banner',
@@ -13,7 +14,8 @@ export class BannerComponent implements OnInit {
 
   constructor(
     private reset: ResetDataService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -23,12 +25,11 @@ export class BannerComponent implements OnInit {
     this.isDisabledResetBtn = true;
     this.message = '';
 
+    this.auth.removeToken();
     this.reset.database().subscribe(
       res => {
         // this.isDisabledResetBtn = false;
         location.reload();
-
-
       },
       errors => {
         this.isDisabledResetBtn = false;
