@@ -24,9 +24,9 @@ const httpOptions = {
 })
 export class AuthService {
   private readonly apiUrl = environment.apiUrl;
-  private registerUrl = this.apiUrl + '/register';
-  private loginUrl = this.apiUrl + '/login';
-  private logoutUrl = this.apiUrl + '/logout';
+  private registerUrl = this.apiUrl + 'register';
+  private loginUrl = this.apiUrl + 'login';
+  private logoutUrl = this.apiUrl + 'logout';
 
   constructor(
     private http: HttpClient,

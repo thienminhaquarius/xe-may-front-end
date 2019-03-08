@@ -7,9 +7,9 @@
     <div class="card-body">
       <h5 class="card-title">{{product?.name?.toUpperCase()}}</h5>
       <p class="card-text">{{product?.price | currency:'$'}}</p>
-      <p class="card-text">Commnets ({{product?.comments_count}})</p>
+      <p class="card-text">Comments ({{product?.comments_count}})</p>
 
-      <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [starType]="'icon'"
+      <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [starType]="'svg'"
         [rating]="product?.ratings_avg">
       </star-rating>
     </div>

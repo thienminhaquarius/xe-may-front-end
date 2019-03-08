@@ -1,0 +1,14 @@
+<div class="container">
+  <hr>
+  <div class="media">
+    <img class="mr-3 avatarImage" src="{{imgSrc}}" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-">
+        <span class="text-primary">{{commentModel?.user?.name || "Username"}}&ensp;&ensp;</span>
+        <span class="text-success">{{commentModel?.title || "Title" }}&ensp;&ensp;</span>
+        &ensp;&ensp;
+        <span class="text-muted">{{commentModel?.created_at || "Timestamp"}}</span>
+      </h5>
+      {{commentModel?.content || "Content"}}
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <p>The form below contains a textarea for comments:</p>
+  <form>
+    <div class="form-group">
+      <label for="title">Comment Title:</label>
+      <input name="title" [(ngModel)]="createCommentModel.title" type="text" class="form-control" id="title">
+
+      <label for="comment">Comment Content:</label>
+      <textarea name="content" [(ngModel)]="createCommentModel.content" class="form-control" rows="2" id="comment"
+        name="text"></textarea>
+    </div>
+    <button (click)="createComment()" [disabled]="isDisabled" type="submit" class="btn btn-primary">Submit</button>
+    <span *ngIf="isDisabled">&nbsp;&nbsp;&nbsp; You need to login to use comment!</span>
+  </form>
+  <br>
+  <p>{{message}}</p>
+</div>

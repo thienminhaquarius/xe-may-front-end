@@ -17,7 +17,7 @@ if (useLocal) {
 export const environment = {
   production: true,
   url: url,
-  apiUrl: url + 'api',
+  apiUrl: url + 'api/',
   assetsThumbnailUrl: url + 'productThumbnailImage/'
 };
 

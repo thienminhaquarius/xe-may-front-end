@@ -19,6 +19,9 @@ import { AddNewBikeComponent } from './add-new-bike/add-new-bike.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { FooterComponent } from './footer/footer.component';
 import { UserRatingComponent } from './user-rating/user-rating.component';
+import { CommentComponent } from './comment/comment.component';
+import { CreateCommentComponent } from './create-comment/create-comment.component';
+import { CommentDashboardComponent } from './comment-dashboard/comment-dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -30,7 +33,9 @@ const appRoutes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
   //test component
-  { path: 'user-rating', component: UserRatingComponent },
+  { path: 'comment', component: CommentComponent },
+  { path: 'comment-dashboard', component: CommentDashboardComponent },
+  { path: 'create-comment', component: CreateCommentComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -48,6 +53,9 @@ const appRoutes: Routes = [
     AddNewBikeComponent,
     FooterComponent,
     UserRatingComponent,
+    CommentComponent,
+    CreateCommentComponent,
+    CommentDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +63,10 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     StarRatingModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { useHash: true }),
+    RouterModule.forRoot(appRoutes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

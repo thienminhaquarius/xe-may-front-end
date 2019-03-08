@@ -21,22 +21,22 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   load(queryString) {
-    return this.http.get<Array<ProductInterface>>(this.apiUrl + "/bikes" + "?" + queryString);
+    return this.http.get<Array<ProductInterface>>(this.apiUrl + "bikes" + "?" + queryString);
   }
 
   create(newBike: any, httpHeaders: any) {
-    return this.http.post(this.apiUrl + "/bikes", newBike, httpHeaders);
+    return this.http.post(this.apiUrl + "bikes", newBike, httpHeaders);
   }
 
   getDetailBike(id, httpHeaders: any) {
-    return this.http.get(this.apiUrl + "/bikes" + "/" + id, httpHeaders);
+    return this.http.get(this.apiUrl + "bikes" + "/" + id, httpHeaders);
   }
 
   deleteBike(id: any, httpHeaders: any) {
-    return this.http.delete(this.apiUrl + "/bikes" + "/" + id, httpHeaders);
+    return this.http.delete(this.apiUrl + "bikes" + "/" + id, httpHeaders);
   }
 
   createOrUpdateRating(ratingModel: any, httpHeaders: any) {
-    return this.http.post(this.apiUrl + "/ratings", ratingModel, httpHeaders);
+    return this.http.post(this.apiUrl + "ratings", ratingModel, httpHeaders);
   }
 }

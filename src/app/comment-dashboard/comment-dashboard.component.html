@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="container">
+    <h4 class="card-text">Comments</h4>
+  </div>
+
+  <app-create-comment [bike_id]="bike_id"></app-create-comment>
+
+  <div class="container">
+    <h6 class="card-text" *ngIf="listCommentId.length">New Comments</h6>
+    <h4 class="card-text" *ngIf="!listCommentId.length">There's no comments for this bike now</h4>
+  </div>
+  <div *ngFor="let comment of listCommentId">
+    <app-comment commentId="{{comment.id}}"></app-comment>
+  </div>
+
+</div>

@@ -9,15 +9,9 @@
       <h5 class="card-title">{{bike?.name?.toUpperCase()}}</h5>
       <p class="card-text">Prices: {{bike?.price | currency:'$ '}}</p>
       <p class="card-text">Info: {{bike?.bikedetail?.info}}</p>
-      <div class="row">
-        <div class="col-xs-5">
-          Current Rating: {{bike?.ratings_avg}}
-          <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [starType]="'icon'"
-            [rating]="bike?.ratings_avg || 0">
-          </star-rating>
-        </div>
-        <div class="col-xs-7"></div>
-      </div>
+      <star-rating labelText="Current Rating: {{bike?.ratings_avg}}" labelPosition="top" staticColor="ok"
+        [showHalfStars]="true" [readOnly]="true" [starType]="'svg'" [rating]="bike?.ratings_avg || 0">
+      </star-rating>
     </div>
   </div>
   <hr>
@@ -25,13 +19,5 @@
   <app-user-rating *ngIf="activeRatingComponent" [ratingModel]="userHasRatingThis"></app-user-rating>
   <br>
   <hr>
-  <h3 class="card=text">Comments</h3>
-  <p>The form below contains a textarea for comments:</p>
-  <form action="/action_page.php">
-    <div class="form-group">
-      <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="3" id="comment" name="text"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <app-comment-dashboard *ngIf="bike?.id" [bike_id]="bike.id"></app-comment-dashboard>
 </div>

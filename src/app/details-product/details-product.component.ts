@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { HttpHeaders } from '@angular/common/http';
 
 
-
+import { Img } from '../defaultImageStr';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -17,9 +17,9 @@ import { environment } from '../../environments/environment';
 })
 export class DetailsProductComponent implements OnInit {
 
-  public bike: any;
+  public bike: any = null;
   public readonly assetsUrl = environment.assetsThumbnailUrl;
-  public readonly defaultImg = environment.url + 'default.jpg';
+  public readonly defaultImg = Img.size200x200;
   public imageSrc: String;
   public userHasRatingThis: any = null;
   public activeRatingComponent: boolean = false;
@@ -45,7 +45,7 @@ export class DetailsProductComponent implements OnInit {
 
       this.productsService.getDetailBike(params.id, httpOptions).subscribe(bike => {
         this.bike = bike;
-        console.log(this.bike);
+        console.log('DetailBike', this.bike);
         this.imageSrc = this.assetsUrl + this.bike.thumbnailImage;
 
         //whether User has ratated this bike in the past        

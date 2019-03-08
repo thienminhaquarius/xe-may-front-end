@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-5">
       <star-rating [rating]="ratingPoint" size="large" [readOnly]="!activeRating" [hoverEnabled]="activeRating"
-        staticColor="ok" [starType]="'icon'" labelPosition="bottom" labelText="Your rating: {{ratingPoint}} "
+        staticColor="ok" [starType]="'svg'" labelPosition="bottom" labelText="Your rating: {{ratingPoint}} "
         (ratingChange)="onClickRatingChange($event)">
       </star-rating>
     </div>

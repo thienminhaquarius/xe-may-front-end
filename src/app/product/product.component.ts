@@ -5,6 +5,8 @@ import { ProductsService } from '../services/products.service';
 import { HttpHeaders } from '@angular/common/http';
 import { EmitRemoveProductService } from '../services/emit-remove-product.service'
 
+
+import { Img } from '../defaultImageStr';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -16,7 +18,7 @@ export class ProductComponent implements OnInit {
 
 
   public readonly assetsUrl = environment.assetsThumbnailUrl;
-  public readonly defaultImg = environment.url + 'default.jpg';
+  public readonly defaultImg = Img.size200x200;
   public imageSrc: String;
   @Input() product: any
 
