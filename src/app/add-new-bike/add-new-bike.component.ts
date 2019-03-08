@@ -55,7 +55,6 @@ export class AddNewBikeComponent implements OnInit {
 
     this.products.create(this.newBike, this.httpOptions).subscribe(
       res => {
-        console.log(res)
         this.messages = 'Success';
         this.router.navigate(['/']);
 
@@ -63,7 +62,6 @@ export class AddNewBikeComponent implements OnInit {
       },
       errors => {
         this.isDisabled = false;
-        console.log(errors)
         if (errors.status == 401) {
           this.messages = 'User is not valid, login again';
           this.auth.isValidatedToken();

@@ -13,14 +13,15 @@ import { Img } from '../defaultImageStr';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  public systemAdmin = false;
+  public systemAdmin: boolean = false;
+  public isDisabledDeleteBtn: boolean = false;
   private httpOptions: any;
-
 
   public readonly assetsUrl = environment.assetsThumbnailUrl;
   public readonly defaultImg = Img.size200x200;
   public imageSrc: String;
-  @Input() product: any
+  @Input() bike_id: any
+  public bike: any = {};
 
   constructor(
     private auth: AuthService,
@@ -31,12 +32,21 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imageSrc = this.assetsUrl + this.product.thumbnailImage;
+    // this.imageSrc = this.assetsUrl + this.product.thumbnailImage;
+
+    this.productSevice.getBikeDashboard(this.bike_id).subscribe(
+      bike => {
+        this.bike = bike;
+        this.imageSrc = this.assetsUrl + this.bike.thumbnailImage;
+        console.log(this.bike);
+      },
+      errors => {
+
+      }
+    )
 
     if (this.auth.isAuhtenticated()) {
       this.systemAdmin = this.auth.getUserInfo()['useremail'] === 'boss@gmail.com';
-      console.log(this.product);
-
       this.httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -47,10 +57,12 @@ export class ProductComponent implements OnInit {
   }
 
   deleteBtn() {
-    this.productSevice.deleteBike(this.product.id, this.httpOptions).subscribe(
+    this.isDisabledDeleteBtn = true;
+
+    this.productSevice.deleteBike(this.bike_id, this.httpOptions).subscribe(
       res => {
         console.log('Delete Success');
-        this.emitRemoveProduct.doUpdateDashboard(this.product.id);
+        this.emitRemoveProduct.doUpdateDashboard(this.bike_id);
       },
       errors => {
         console.log(errors.error);

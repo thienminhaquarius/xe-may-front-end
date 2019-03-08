@@ -1,9 +1,8 @@
-:host .product {
+:host .bike {
     margin-top: 25px;
     box-shadow: 2px 6px 10px 0 rgba(207, 205, 205, 0.2);
 }
 
-:host .product:hover {
+:host .bike:hover {
     box-shadow: 0 8px 12px 0 rgba(48, 47, 47, 0.2);
 }
-

@@ -1,7 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
-import { ProductsService, ProductInterface } from '../services/products.service';
+import { ProductsService } from '../services/products.service';
 import { Router } from '@angular/router';
-import { EmitRemoveProductService } from '../services/emit-remove-product.service'
+import { EmitRemoveProductService } from '../services/emit-remove-product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,27 +10,21 @@ import { EmitRemoveProductService } from '../services/emit-remove-product.servic
 })
 export class DashboardComponent implements OnInit {
 
-  products: Array<ProductInterface>;
-  queryString: String;
-  disableLoading: Boolean;
-  showMoreBtn: Boolean
+  public listIdBikes = [];
+  public queryString: string = '';
+  disableLoading: Boolean = false;
+  showMoreBtn: Boolean = true;
 
   constructor(
-    private service: ProductsService,
+    private prods: ProductsService,
     private router: Router,
     private emitRemoveProduct: EmitRemoveProductService
   ) {
-    console.log(this.products);
-    this.products = [];
-    this.queryString = '';
-    this.disableLoading = false;
-    this.showMoreBtn = true;
-
     this.emitRemoveProduct.updateDashboard.subscribe((id) => {
       console.log(id);
-      for (let i = 0; i < this.products.length; i++) {
-        if (this.products[i].id == id) {
-          this.products.splice(i, 1);
+      for (let i = 0; i < this.listIdBikes.length; i++) {
+        if (this.listIdBikes[i].id == id) {
+          this.listIdBikes.splice(i, 1);
           return;
         }
       }
@@ -38,13 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getMore();
-    // setInterval(() => {
-    //   this.products.splice(0, 1);
-    // }, 3000);
-
     this.getMore();
-
   }
 
   isShowMoreBtn(moreProductLength) {
@@ -56,17 +44,15 @@ export class DashboardComponent implements OnInit {
   }
 
   getMore() {
-    if (this.products) {
-      this.queryString = 'skip=' + this.products.length;
-    }
+
     this.disableLoading = false;
-
-    this.service.load(this.queryString).subscribe(products => {
-      // console.log(products);
+    let skip = this.listIdBikes.length;
+    this.prods.loadListbikeId(skip).subscribe((listIdBikes: any) => {
+      console.log(listIdBikes);
       this.disableLoading = true;
-      this.showMoreBtn = this.isShowMoreBtn(products);
+      this.showMoreBtn = this.isShowMoreBtn(listIdBikes);
 
-      this.products = [...this.products, ...products];
+      this.listIdBikes = [...this.listIdBikes, ...listIdBikes];
     }, error => {
       console.log(error);
       this.router.navigate(['/not-found']);

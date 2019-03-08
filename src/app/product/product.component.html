@@ -1,16 +1,16 @@
-<div class="card product">
+<div class="card bike">
   <div *ngIf="systemAdmin">
-    <button (click)="deleteBtn()" type="button" class="btn btn-danger">Delete</button>
+    <button [disabled]="isDisabledDeleteBtn" (click)="deleteBtn()" type="button" class="btn btn-danger">Delete</button>
   </div>
-  <a href="#" class="btn" routerLink="/detailsproduct/{{product.id}}"> <img class="card-img-top" src="{{imageSrc}}"
+  <a href="#" class="btn" routerLink="/detailsproduct/{{bike.id}}"> <img class="card-img-top" src="{{imageSrc}}"
       alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{product?.name?.toUpperCase()}}</h5>
-      <p class="card-text">{{product?.price | currency:'$'}}</p>
-      <p class="card-text">Comments ({{product?.comments_count}})</p>
+      <h5 class="card-title">{{bike?.name?.toUpperCase() || "-" }}</h5>
+      <p class="card-text">{{bike?.price | currency:'$' || "-"}}</p>
+      <p class="text-secondary">Comments ({{bike?.comments_count || 0}})</p>
 
       <star-rating staticColor="ok" [showHalfStars]="true" [readOnly]="true" [starType]="'svg'"
-        [rating]="product?.ratings_avg">
+        [rating]="bike?.ratings_avg || 0 ">
       </star-rating>
     </div>
   </a>

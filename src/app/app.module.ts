@@ -22,6 +22,7 @@ import { UserRatingComponent } from './user-rating/user-rating.component';
 import { CommentComponent } from './comment/comment.component';
 import { CreateCommentComponent } from './create-comment/create-comment.component';
 import { CommentDashboardComponent } from './comment-dashboard/comment-dashboard.component';
+import { BannerComponent } from './banner/banner.component';
 
 
 const appRoutes: Routes = [
@@ -33,9 +34,6 @@ const appRoutes: Routes = [
   { path: 'logout', component: LogoutComponent },
 
   //test component
-  { path: 'comment', component: CommentComponent },
-  { path: 'comment-dashboard', component: CommentDashboardComponent },
-  { path: 'create-comment', component: CreateCommentComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -56,6 +54,7 @@ const appRoutes: Routes = [
     CommentComponent,
     CreateCommentComponent,
     CommentDashboardComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,

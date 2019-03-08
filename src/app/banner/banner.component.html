@@ -1,0 +1,13 @@
+<div class="addminAccount">
+
+  <h5 class=" text-danger text-center">Admin can delete product
+  </h5>
+  <h5 class="text-success text-center "> username: boss@gmail.com</h5>
+  <h5 class="text-success text-center  "> password: 123456</h5>
+  <br>
+  <div class="text-center">
+    <button (click)="resetDatabase()" [disabled]="isDisabledResetBtn" type="button"
+      class="btn btn-success text-center">Reset Database</button>
+  </div>
+  {{message}}
+</div>

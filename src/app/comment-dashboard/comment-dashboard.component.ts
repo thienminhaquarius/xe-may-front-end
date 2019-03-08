@@ -18,19 +18,18 @@ export class CommentDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('comment-dashboard', this.bike_id);
     this.comments.getIdComments(this.bike_id).subscribe(
       listCommentId => {
         this.listCommentId = listCommentId;
         // console.log(listCommentId);
       },
       errors => {
-        console.log(errors.error);
+        // console.log(errors.error);
 
       });
 
     this.comments.addNewCommentId.subscribe((commentId: string) => {
-      console.log(commentId);
+      // console.log(commentId);
       this.unshiftCommentIdObj(commentId)
     })
   }

@@ -1,8 +1,8 @@
 <div class="container dashboard justify-content-center">
 
   <div class="row">
-    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let product of products">
-      <app-product [product]="product"></app-product>
+    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let idOjb of listIdBikes">
+      <app-product [bike_id]="idOjb.id"></app-product>
     </div>
   </div>
 

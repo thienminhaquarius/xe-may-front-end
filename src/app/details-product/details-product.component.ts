@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService, ProductInterface } from '../services/products.service';
+import { ProductsService } from '../services/products.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpHeaders } from '@angular/common/http';

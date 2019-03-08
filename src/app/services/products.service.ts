@@ -2,14 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-export interface ProductInterface {
-  id: string,
-  name: string,
-  price: number,
-  picture: string,
-  created_at: string,
-  updated_at: string
-}
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +12,9 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  load(queryString) {
-    return this.http.get<Array<ProductInterface>>(this.apiUrl + "bikes" + "?" + queryString);
+  loadListbikeId(skip: number = 0, take: number = 8) {
+    let queryString = 'skip=' + skip + '&take=' + take;
+    return this.http.get(this.apiUrl + "bikes" + "?" + queryString);
   }
 
   create(newBike: any, httpHeaders: any) {
@@ -38,5 +31,9 @@ export class ProductsService {
 
   createOrUpdateRating(ratingModel: any, httpHeaders: any) {
     return this.http.post(this.apiUrl + "ratings", ratingModel, httpHeaders);
+  }
+
+  getBikeDashboard(id: string = null) {
+    return this.http.get(this.apiUrl + "bikedashboard?id=" + id);
   }
 }

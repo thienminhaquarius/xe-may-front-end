@@ -8,7 +8,7 @@ export class EmitRemoveProductService {
   public updateDashboard: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
-  doUpdateDashboard(id) {
+  doUpdateDashboard(id: string) {
     this.updateDashboard.emit(id);
   }
 }
