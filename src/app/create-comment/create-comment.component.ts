@@ -18,7 +18,7 @@ class commentModel {
 export class CreateCommentComponent implements OnInit {
 
   @Input() bike_id: string;
-
+  public isNotAuthenticated: boolean = true;
   public createCommentModel = new commentModel;
   public isDisabled: boolean = true;
   public message: string = '';
@@ -31,6 +31,7 @@ export class CreateCommentComponent implements OnInit {
 
   ngOnInit() {
     if (this.auth.isAuhtenticated()) {
+      this.isNotAuthenticated = false
       this.isDisabled = false;
       this.createCommentModel.user_id = this.auth.getUserInfo()['sub'];
       this.createCommentModel.bike_id = this.bike_id;

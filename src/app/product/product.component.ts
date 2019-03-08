@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
         this.emitRemoveProduct.doUpdateDashboard(this.product.id);
       },
       errors => {
-        console.log(errors);
+        console.log(errors.error);
       });
   }
 }

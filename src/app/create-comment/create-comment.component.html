@@ -10,7 +10,7 @@
         name="text"></textarea>
     </div>
     <button (click)="createComment()" [disabled]="isDisabled" type="submit" class="btn btn-primary">Submit</button>
-    <span *ngIf="isDisabled">&nbsp;&nbsp;&nbsp; You need to login to use comment!</span>
+    <span *ngIf="isNotAuthenticated">&nbsp;&nbsp;&nbsp; You need to login to use comment!</span>
   </form>
   <br>
   <p>{{message}}</p>
