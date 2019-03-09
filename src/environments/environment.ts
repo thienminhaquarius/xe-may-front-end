@@ -3,14 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 
-const useLocal = true;
-
-var url = '';
-if (useLocal) {
-  url = 'http://localhost:8081/';
-} else {
-  url = 'https://laravel-xe.herokuapp.com/';
-}
+var url = 'http://localhost:8081/';
 
 
 export const environment = {
