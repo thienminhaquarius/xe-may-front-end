@@ -21,10 +21,16 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
   }
 
-  resetDatabase() {
+  btnReset() {
     this.isDisabledResetBtn = true;
     this.message = '';
+    this.router.navigate(['/']);
+    setTimeout(() => {
+      this.resetDatabase();
+    }, 200);
+  }
 
+  resetDatabase() {
     this.auth.removeToken();
     this.reset.database().subscribe(
       res => {
@@ -34,7 +40,7 @@ export class BannerComponent implements OnInit {
       errors => {
         this.isDisabledResetBtn = false;
         this.message = 'Reset database errors, try again later';
-        // location.reload();
+        location.reload();
       }
     );
   }

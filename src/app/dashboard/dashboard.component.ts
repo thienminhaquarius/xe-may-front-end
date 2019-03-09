@@ -11,9 +11,11 @@ import { EmitRemoveProductService } from '../services/emit-remove-product.servic
 export class DashboardComponent implements OnInit {
 
   public listIdBikes = [];
-  public queryString: string = '';
-  disableLoading: Boolean = false;
-  showMoreBtn: Boolean = true;
+  public listBikeTopRatings = [];
+  public listBikeTopComments = [];
+
+  public disableLoading: Boolean = false;
+  public showMoreBtn: Boolean = true;
 
   constructor(
     private prods: ProductsService,
@@ -32,7 +34,15 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Load newest bikes
     this.getMore();
+
+    //Load top raitng bikes
+    this.getTopRatingBikes();
+
+    //Load top comment bikes
+    this.getTopCommentBikes();
+
   }
 
   isShowMoreBtn(moreProductLength) {
@@ -58,5 +68,29 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/not-found']);
     });
   }
+
+  getTopRatingBikes() {
+    let skip = 0, take = 8, order = 'rating';
+
+    this.prods.loadListbikeId(skip, take, order).subscribe((listBikeTopRatings: any) => {
+
+      this.listBikeTopRatings = listBikeTopRatings;
+    }, error => {
+      console.log(error);
+      // this.router.navigate(['/not-found']);
+    });
+  }
+
+  getTopCommentBikes() {
+    let skip = 0, take = 8, order = 'comment';
+    this.prods.loadListbikeId(skip, take, order).subscribe((listBikeTopComments: any) => {
+
+      this.listBikeTopComments = listBikeTopComments;
+    }, error => {
+      console.log(error);
+      // this.router.navigate(['/not-found']);
+    });
+  }
+
 
 }

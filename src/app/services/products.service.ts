@@ -12,8 +12,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  loadListbikeId(skip: number = 0, take: number = 8) {
-    let queryString = 'skip=' + skip + '&take=' + take;
+  loadListbikeId(skip: number = 0, take: number = 8, order: string = 'time') {
+    let queryString = 'skip=' + skip + '&take=' + take + '&order=' + order;
     return this.http.get(this.apiUrl + "bikes" + "?" + queryString);
   }
 

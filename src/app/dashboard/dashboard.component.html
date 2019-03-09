@@ -1,8 +1,10 @@
 <div class="container dashboard justify-content-center">
-
+  <br>
+  <br>
+  <h2 class="text-info">NEWEST BIKES</h2>
   <div class="row">
-    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let idOjb of listIdBikes">
-      <app-product [bike_id]="idOjb.id"></app-product>
+    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let bike of listIdBikes">
+      <app-product [bike_id]="bike.id"></app-product>
     </div>
   </div>
 
@@ -15,4 +17,23 @@
     <button *ngIf="showMoreBtn" type="button" class="btn btn-success" (click)="getMore()">More
       Products</button>
   </div>
+
+  <br>
+  <br>
+  <h2 class="text-success" *ngIf="listBikeTopRatings.length">TOP RATINGS</h2>
+  <div class="row">
+    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let bike of listBikeTopRatings">
+      <app-product [bike_id]="bike.id"></app-product>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <h2 class="text-secondary" *ngIf="listBikeTopComments.length">TOP COMMENTS</h2>
+  <div class="row">
+    <div class="card-deck col-6 col-sm-4 col-md-3 float-left" *ngFor="let bike of listBikeTopComments">
+      <app-product [bike_id]="bike.id"></app-product>
+    </div>
+  </div>
+
 </div>
